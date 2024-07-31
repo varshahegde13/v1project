@@ -1,0 +1,23 @@
+{% extends "lay.html" %}
+{% load static %}
+{% block title %}VTweet {% endblock title %}
+
+{% block content%}
+<h1 class="text-center text-black mt-4">Welcome to VTweet </h1>
+
+<h2>{% if form.instance.pk %}
+    Edit Tweet
+    {% else %}
+
+    Create VTweet
+
+    {% endif %}
+    <form method ="post" enctype="multipart/form-data" class="form">
+         {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-warning" type="submit">Submit</button>
+    </form>
+    <a href="{% url 'tweet_list' %}">Back to tweet list</a>
+</h2>
+
+{% endblock content %}
